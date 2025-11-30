@@ -1,3 +1,2 @@
 [toolchain]
-channel = "stable"
-profile = "default"
+channel = "1.91"

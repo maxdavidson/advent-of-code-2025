@@ -1,0 +1,30 @@
+name: CI
+
+on: push
+
+env:
+  RUSTFLAGS: --codegen target-cpu=native
+
+concurrency:
+  group: ci
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Check out sources
+        uses: actions/checkout@v5
+
+      - name: Set up Rust toolchain
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Get Rust config
+        run: echo RUST_CFG=$(cargo --quiet rustc -- --print cfg) >> $GITHUB_ENV
+
+      - name: Set up Rust cache
+        uses: Swatinem/rust-cache@v2
+
+      - name: Run tests
+        run: cargo test --release --color=always -- --color=always
