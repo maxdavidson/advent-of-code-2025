@@ -2,9 +2,6 @@
 **/*.rs.bk
 Cargo.lock
 
-# VS Code
-.vscode/
-
 # By-products
 *.log
 *.tmp
