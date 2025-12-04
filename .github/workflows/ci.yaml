@@ -4,6 +4,7 @@ on: push
 
 env:
   RUSTFLAGS: --codegen target-cpu=native
+  CARGO_TERM_COLOR: always
 
 concurrency:
   group: ci
@@ -26,5 +27,9 @@ jobs:
       - name: Set up Rust cache
         uses: Swatinem/rust-cache@v2
 
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: nextest@0.9
+          
       - name: Run tests
-        run: cargo test --release --color=always -- --color=always
+        run: cargo nextest run --release
