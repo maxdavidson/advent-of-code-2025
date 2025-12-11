@@ -20,3 +20,4 @@ must_use_candidate = "allow"
 
 [dependencies]
 bit-set = "0.8.0"
+microlp = "0.2.11"
