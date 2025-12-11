@@ -32,4 +32,4 @@ jobs:
           tool: nextest@0.9
           
       - name: Run tests
-        run: cargo nextest run --release
+        run: cargo nextest run --release --test-threads=1
